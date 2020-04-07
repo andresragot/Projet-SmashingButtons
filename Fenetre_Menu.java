@@ -57,9 +57,9 @@ public class Fenetre_Menu extends JFrame {
         this.test2.add(item4);
         this.test2.add(item5);
 
-        this.menuBar.add(test1);
-        this.menuBar.add(test2);
-        this.setJMenuBar(menuBar);
+        //this.menuBar.add(test1);
+        //this.menuBar.add(test2);
+        //this.setJMenuBar(menuBar);
     
     
     //Rendre la fenêtre visible
