@@ -6,8 +6,8 @@ public class Joueur extends Entite{
     //public int deplacement; nombre de case où le joueur peut se déplacer en 1 tour (dans toute une ligne ou toute une colonne)
 
     
-    public Joueur(String nomPerso, int x, int y, int haut, int larg, int PV){
-        super(x,y, haut, larg);
+    public Joueur(String nomPerso, int x, int y, int Haut, int Larg, int PV){
+        super(x,y, Haut, Larg);
         this.PV=PV;
         this.nomPerso=nomPerso;
     }
