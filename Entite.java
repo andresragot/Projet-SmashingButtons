@@ -78,4 +78,5 @@ public class Entite{
     public void setLarg( int Larg){
     	this.Larg=Larg;
     }
+
 }

@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
@@ -46,6 +47,7 @@ public class Fenetre_Jeu extends JFrame{
         this.menuBar.add(test1);
         this.menuBar.add(test2);
         this.setJMenuBar(menuBar);
+        
         
         // Rendre fenetre visible
         this.setVisible(true);

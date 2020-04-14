@@ -28,7 +28,12 @@ public class Jeu {
 	public int colonne;
 	public int[][] plateau;
 	public int[] hello;
-
+    
+    private Clavier key;
+    
+    public Clavier getClavier(){
+        return key;
+    }
 
 	public int comptePoint(){
 		return 2;
