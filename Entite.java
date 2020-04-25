@@ -1,82 +1,57 @@
-public class Entite{
-    
-    //Propriétés caractérisant une entité
-    private int x; 
-    private int y; 
-    private int Haut;
-    private int Larg;
-    private int nbEntites;
-    
-    //Constructeur
-    public Entite(int x, int y, int Haut, int Larg){
-        this.x=x;
-        this.y=y;
-        this.Haut=Haut;
-        this.Larg= Larg;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+
+public class Entite {
+    // Attributs
+    private Color maCouleur;
+    private int x;
+    private int y;
+    private int nbLignes;
+    private int nbColonnes;
+    private int deltaVie;
+
+    // Constructeur
+    public Entite(int[][] carte, Color couleur, int Vie){
+        x=0; 
+        y=0;
+        while(carte[y][x]!=Plateau.CASE_VIDE) {
+            x = (int)(carte[0].length * Math.random());
+            y = (int)(carte.length * Math.random());
+        }
+
+        maCouleur=couleur;
+        deltaVie=Vie;
+        nbLignes = carte.length;
+        nbColonnes = carte[0].length;
     }
 
-    /**
-     * Getter pour la variable x
-     * @return x int : Position en x de l'entité (ligne)
-     */
-    public int getx(){
-        return this.x;
+
+    public void Action(Joueur joueur){ 
+        if(joueur.getX()==x && joueur.getY()==y){
+            joueur.modifPV(deltaVie);
+        }
     }
 
-     /**
-     * Setter pour la variable x
-     * @param x int
-     */
-    public void setx( int x){
-    	this.x=x;
-    }
-    
-    /**
-     * Getter pour la variable y
-     * @return y int : Position en y de l'entité (colonne)
-     */
-    public int gety(){
-        return this.y;
-    }
+    public void dessiner(Graphics g,int w, int h){
+        int x1 = x*w/nbColonnes;
+        int y1 = y*h/nbLignes;
 
-     /**
-     * Setter pour la variable y
-     * @param y int
-     */
-    public void sety(int y){
-    	this.y=y;
+        int larg = w/nbColonnes;
+        int haut = h/nbLignes;
+
+        g.setColor(maCouleur);
+        g.fillRect(x1,y1,larg,haut);
     }
     
-    /**
-     * Getter pour la variable Haut
-     * @return Haut int : hauteur de l'entité 
-     */
-    public int getHaut(){
-        return this.Haut;
-    }
-
-     /**
-     * Setter pour la variable Haut
-     * @param Haut int
-     */
-    public void setHaut( int Haut){
-    	this.Haut=Haut;
+    // Getters
+    public int getNbLignes(){
+        return nbLignes;
+    
     }
     
-    /**
-     * Getter pour la variable Larg
-     * @return Larg int : largeur de l'entité 
-     */
-    public int getLarg(){
-        return this.Larg;
+    public int getNbColonnes(){
+        return nbColonnes;
     }
-
-     /**
-     * Setter pour la variable Larg
-     * @param Larg int
-     */
-    public void setLarg( int Larg){
-    	this.Larg=Larg;
-    }
-
 }

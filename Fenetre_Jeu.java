@@ -1,7 +1,9 @@
-
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import java.util.LinkedList;
+import javax.swing.ImageIcon;
 
 
 public class Fenetre_Jeu extends JFrame{
@@ -18,7 +20,7 @@ public class Fenetre_Jeu extends JFrame{
     private JMenuItem item5 = new JMenuItem("Reprendre");
     
     //Declaration des elements graphiques de la fenetre
-    
+    private Plateau labyrinthe;
     
     /**
      * Constructeur de la classe Fenetre_Jeu
@@ -26,15 +28,17 @@ public class Fenetre_Jeu extends JFrame{
     public Fenetre_Jeu(Fenetre_Menu Menu){
         
         super("Smashing buttons");
+        labyrinthe = new Plateau();
+        labyrinthe.setBackground(Color.BLACK);
+        
+        JPanel conteneurPrincipal = new JPanel (new BorderLayout());
+        conteneurPrincipal.setBackground(Color.WHITE);
+        conteneurPrincipal.add(labyrinthe, BorderLayout.CENTER);
+
+        
+        this.setContentPane(conteneurPrincipal);
         this.setSize(600,200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-        JPanel conteneurPrincipal = new JPanel (new FlowLayout());
-        conteneurPrincipal.setBackground(Color.WHITE);
-        
-        this.add(conteneurPrincipal);
-        
         
         //Menus déroulants      
         this.test1.add(item1);
