@@ -57,11 +57,12 @@ public class Jeu implements Runnable{
 	
 	private void tick(){
 		keyManager.tick();
+		
 		if (State.getState() != null){
 			State.getState().tick();
 		}
 	}
-	int x = 0;
+	
 	private void render(){
 		bs = affichage.getCanvas().getBufferStrategy();
 		if (bs == null){
@@ -123,9 +124,11 @@ public class Jeu implements Runnable{
 		stop(); //au cas ou 
 		
 	}
+	
 	public KeyManager getKeyManager(){
 		return keyManager;
 	}
+	
 	public synchronized void start(){
 		if (running) return;
 		running = true;

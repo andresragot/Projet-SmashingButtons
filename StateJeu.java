@@ -12,19 +12,19 @@ public class StateJeu extends State {
 	//private BufferedImage player = ImageLoader.loadImage("player.png");
 	//private BufferedImage mur = ImageLoader.loadImage("MURO.png");
 	//============================//
-	private Player player;
+	private Joueur joueur;
 	
 	
 	public StateJeu(Jeu jeu){
 		super (jeu);
-		player  = new Player(jeu, 50,50);
+		joueur  = new Joueur(jeu, 50, 50);
 	}
 	
 	public void tick(){
-		player.tick();
+		joueur.tick();
 	}
 	public void render(Graphics g){
-		player.render(g);
+		joueur.render(g);
 	}
 	
 }
