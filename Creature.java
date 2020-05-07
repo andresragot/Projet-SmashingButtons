@@ -1,5 +1,4 @@
-import java.awt.Graphics;//
-<<<<<<< HEAD
+import java.awt.Graphics;
 import java.awt.image.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -25,7 +24,6 @@ public class Creature {
 	public void render (Graphics g){
 		g.drawImage(creature, (int) x , (int) y,null);
 	}
-=======
 
 public abstract class Creature extends Entite {
 	
@@ -36,6 +34,7 @@ public abstract class Creature extends Entite {
 		pV=10;
 	}
 	
->>>>>>> 3e6a947fd996b3e5bf63fb2d57d8c04e8ccca7f7
+
 }
 
+}
