@@ -8,7 +8,17 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Plateau extends JPanel{
-        
+    // Constantes définissant le jeu
+    /*public static final Color COULEUR_CASE_VIDE = Color.WHITE;
+    public static final Color COULEUR_CASE_MUR = Color.BLACK;
+    public static final Color COULEUR_CASE_DEPART = Color.LIGHT_GRAY;
+    public static final Color COULEUR_CASE_ARRIVEE = Color.MAGENTA;
+
+    public static final int CASE_VIDE = 0;
+    public static final int CASE_MUR = 1;
+    public static final int CASE_DEPART = 2;
+    public static final int CASE_ARRIVEE = 3;*/
+    
     private Image Vide;
     private Image Mur;
     private Image Arrivee;
