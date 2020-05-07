@@ -17,18 +17,18 @@ public class KeyManager implements KeyListener {
 		right = keys[KeyEvent.VK_D];
 	}
 
-	@Override
+	
 	public void keyPressed(KeyEvent e) {
 		keys[e.getKeyCode()] = true;
 		System.out.println("touche");
 	}
 
-	@Override
+	
 	public void keyReleased(KeyEvent e) {
 		keys[e.getKeyCode()] = false;
 	}
 
-	@Override
+	
 	public void keyTyped(KeyEvent e) {
 		
 	}
