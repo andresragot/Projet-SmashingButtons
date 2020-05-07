@@ -1,10 +1,10 @@
+
 import java.awt.*;
 import java.awt.image.*;
 
-import java.awt.Color; 
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-
+import java.awt.Color; //
+import java.awt.Graphics;//
+import java.awt.image.BufferStrategy;//
 
 public class Jeu implements Runnable{
 	
@@ -38,6 +38,7 @@ public class Jeu implements Runnable{
 		largeur = l;
 		titre=nom;
 		keyManager = new KeyManager();
+		
 	}
 	
 	
@@ -54,18 +55,12 @@ public class Jeu implements Runnable{
 		*/
 	}
 	
-
-	public boolean bougerPossible(int c, int l){
-		return true;
-    }
-
 	private void tick(){
 		keyManager.tick();
 		
 		if (State.getState() != null){
 			State.getState().tick();
 		}
-
 	}
 	
 	private void render(){

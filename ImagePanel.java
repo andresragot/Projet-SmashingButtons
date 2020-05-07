@@ -1,8 +1,9 @@
 import java.lang.Object;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
-import javax.imageio.ImageIO;
+
 
 public class ImagePanel{
 
