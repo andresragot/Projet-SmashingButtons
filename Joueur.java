@@ -6,8 +6,8 @@ import javax.swing.ImageIcon;
 
 public class Joueur{
     //attributs
-    private int x; //Numero de colonne dans le plateau
-    private int y; //Numero de ligne dans le plateau
+    private int c; //Numero de colonne dans le plateau
+    private int l; //Numero de ligne dans le plateau
     private int x0; //Numero de colonne de la position initale du joueur
     private int y0; //Numero de ligne de la position initiale du joueur
     private boolean sorti; //Affiche true si le joueur a atteint la CASE_ARRIVEE
@@ -29,29 +29,16 @@ public class Joueur{
         sorti=false;
         PV=2;
         
-        // Recherche des coordonnées de départ sur la carte pour initialiser x et y         
+        // Recherche des coordonnées de départ sur la carte pour initialiser c et l         
         for(int i=0;i<maCarte.length;i++){
             for(int j=0;j<maCarte[i].length; j++){
                 if(maCarte[i][j]==2){
-                    x=j;
-                    y=i;
+                    c=j;
+                    l=i;
                 }
             }
         }
         
-        /*int i=0;
-        int j=0;
-        while(i<maCarte.length && maCarte[i][j]!=Plateau.CASE_DEPART) {
-            while(j<maCarte[i].length && maCarte[i][j]!=Plateau.CASE_DEPART) {
-                j++;
-            }
-            if(j>=maCarte[i].length) {
-                j=0;
-                i++;
-            }
-        }
-        x=j;
-        y=i;*/
     }
     
     
@@ -65,22 +52,22 @@ public class Joueur{
     
     // Deplacements du joueur
     public void setDepart() { 
-        x=x0;
-        y=y0;
+        c=x0;
+        l=y0;
     }
     
-    public void bouger(int deltaX, int deltaY) {
+    public void bouger(int deltaC, int deltaL) {
         if((enVie==true) & !sorti){
-            int newx=x+deltaX;
-            int newy=y+deltaY;
+            int newC=c+deltaC;
+            int newL=l+deltaL;
 
-            if(labyrinthe.getCarte()[newy][newx] == Plateau.CASE_MUR) {
+            if(labyrinthe.getCarte()[newL][newC] == Plateau.CASE_MUR) {
                 System.out.println("Présence d'un mur, déplacement impossible");
             } else {
-                x=newy;
-                y=newy;
+                c=newC;
+                l=newL;
 
-                if(labyrinthe.getCarte()[y][x] == Plateau.CASE_ARRIVEE) {
+                if(labyrinthe.getCarte()[l][c] == Plateau.CASE_ARRIVEE) {
                     sortir();
                     System.out.println("Bravo! Vous avez réussi ce niveau!");
                 }
@@ -98,9 +85,9 @@ public class Joueur{
     @param w Largeur de la surface
     @param h Hauteur de la surface
     */
-    public void dessiner(Graphics g, int w, int h) { //remplacer par image du joueur
-        int x1 = x*w/nbColonnes;
-        int y1 = y*h/nbLignes;
+    public void dessiner(Graphics g, int w, int h) { //remplacer par drawimage
+        int x1 = c*w/nbColonnes;
+        int y1 = l*h/nbLignes;
 
         if(enVie ==true) {
             g.setColor(Color.BLUE);
@@ -110,20 +97,27 @@ public class Joueur{
         g.fillOval(x1,y1,w/nbColonnes,h/nbLignes);
     }
     
+    /*public paintComponent(Graphics g, int w, int h){
+        int x1 = c*w/nbColonnes;
+        int y1 = l*h/nbLignes;
+        super.paintComponent(g);
+        g.drawImage(player,100,75, null);
+    }*/
+    
     /**
-     * Getter pour la variable x
-     * @return x int : ligne où se trouve le joueur
+     * Getter pour la variable c
+     * @return c int : colonne où se trouve le joueur
      */
-    public int getX(){
-        return this.x;
+    public int getC(){
+        return this.c;
     }
 
     /**
-     * Getter pour la variable y
-     * @return y int : colonne où se trouve le joueur
+     * Getter pour la variable l
+     * @return l int : ligne où se trouve le joueur
      */
-    public int getY(){
-        return this.y;
+    public int getL(){
+        return this.l;
     }  
     
     /**

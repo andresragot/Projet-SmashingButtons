@@ -42,7 +42,7 @@ public class Jeu {
 	public void addEntite(Entite type){
 	}
 
-	public void bouger(int x, int y){
+	public void bouger(int c, int l){
 	}
 	
 	public boolean colision(){
@@ -50,7 +50,7 @@ public class Jeu {
 	}
 	
 
-	public boolean bougerPossible(int x, int y){
+	public boolean bougerPossible(int c, int l){
 		return true;
 	}
 

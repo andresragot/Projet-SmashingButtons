@@ -6,19 +6,19 @@ import java.util.*;
 public class Entite {
     // Attributs
     private Color maCouleur;
-    private int x;
-    private int y;
+    private int c;
+    private int l;
     private int nbLignes;
     private int nbColonnes;
     private int deltaVie;
 
     // Constructeur
     public Entite(int[][] carte, Color couleur, int Vie){
-        x=0; 
-        y=0;
-        while(carte[y][x]!=Plateau.CASE_VIDE) {
-            x = (int)(carte[0].length * Math.random());
-            y = (int)(carte.length * Math.random());
+        c=0; 
+        l=0;
+        while(carte[l][c]!=Plateau.CASE_VIDE) {
+            c = (int)(carte[0].length * Math.random());
+            l = (int)(carte.length * Math.random());
         }
 
         maCouleur=couleur;
@@ -29,14 +29,14 @@ public class Entite {
 
 
     public void Action(Joueur joueur){ 
-        if(joueur.getX()==x && joueur.getY()==y){
+        if(joueur.getC()==c && joueur.getL()==l){
             joueur.modifPV(deltaVie);
         }
     }
 
     public void dessiner(Graphics g,int w, int h){
-        int x1 = x*w/nbColonnes;
-        int y1 = y*h/nbLignes;
+        int x1 = c*w/nbColonnes;
+        int y1 = l*h/nbLignes;
 
         int larg = w/nbColonnes;
         int haut = h/nbLignes;

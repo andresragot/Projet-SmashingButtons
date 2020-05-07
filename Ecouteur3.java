@@ -9,6 +9,7 @@ public class Ecouteur3 implements ActionListener{
 	public Ecouteur3(Fenetre_Menu Menu) {
 		this.Menu = Menu;
 	}
+    
     //actionPerformed indique les instructions a executer au clic du bouton
     public void actionPerformed(ActionEvent e){
 		Menu.hide();

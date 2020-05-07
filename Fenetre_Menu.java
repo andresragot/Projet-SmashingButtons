@@ -1,73 +1,79 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
-import java.util.LinkedList;
+import javax.imageio.*;
+import java.io.File;
 import javax.swing.ImageIcon;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Fenetre_Menu extends JFrame {
     
-    //Declaration des attributs de la fenetre
-    private JMenuBar menuBar = new JMenuBar();
-    private JMenu test1 = new JMenu("Fichier");
-    private JMenu test2 = new JMenu("Jeu");
-
-    private JMenuItem item1 = new JMenuItem("Sauvegarder");
-    private JMenuItem item2 = new JMenuItem("Restaurer");
-    private JMenuItem item3 = new JMenuItem("Quitter");
-    private JMenuItem item4 = new JMenuItem("Suspendre");
-    private JMenuItem item5 = new JMenuItem("Reprendre");
-
-
     //Declaration des éléments graphiques de la fenetre
     private JLabel labelPseudo;
     private JTextField champSaisiePseudo;
     
-    private JButton bouton2;
-    private JButton bouton3;
-    private Fenetre_Jeu fen_Jeu;
-
+    private JLabel fondEcran;
+    private JLabel Bienvenue;
+	private JLabel Title;
+    
+    private JPanel panneauPrincipal;
+    
+    private JButton Jouer;
 
     /**
      * Constructeur de la classe Fenetre_Menu
      */
-    public Fenetre_Menu(){
+    public Fenetre_Menu(){        
         this.setTitle("Menu Principal");
-        this.setSize(400,400);
+        this.setSize(500,600);
+        this.setResizable(false); //empeche l'utilisateur de redimensionner la fenetre
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);        
         
-        labelPseudo = new JLabel("Pseudo :");
-        champSaisiePseudo = new JTextField("",20);
+        /*labelPseudo = new JLabel("Pseudo :");
+        champSaisiePseudo = new JTextField("",20);*/
         
-        bouton2 = new JButton ("Avatar");
-        bouton3 = new JButton ("Jouer");
-        fen_Jeu = new Fenetre_Jeu(this);
-        bouton2.addActionListener(new Ecouteur2(this));
-        bouton3.addActionListener(new Ecouteur3(this));
-    
+        Jouer = new JButton ("Jouer");
+        Jouer.setBounds(125,490,250,70); //permet l'emplacement du coin supérieur gauche setBounds(int x, int y, int largeur, int hauteur)
+        Jouer.setBackground(Color.orange);
+        Jouer.addActionListener(new Ecouteur3(this));
+                
+        File ImageFond = new File("fond_hori.jpg");
+		
+		ImageIcon icon = new ImageIcon(new ImageIcon(ImageFond.getAbsolutePath()).getImage().getScaledInstance(500, 600, Image.SCALE_DEFAULT));
         
-        JPanel conteneurPrincipal1 = new JPanel();
-        conteneurPrincipal1.setBackground(Color.MAGENTA);
-        this.add(conteneurPrincipal1);
-        conteneurPrincipal1.add(labelPseudo);
-        conteneurPrincipal1.add(champSaisiePseudo);
+        fondEcran = new JLabel (icon);
+		fondEcran.setBounds(0,0,500,600);
         
-        JPanel conteneurPrincipal2 = new JPanel();
-        conteneurPrincipal2.setBackground(Color.MAGENTA);
-        this.add(conteneurPrincipal2);
-        conteneurPrincipal2.add(bouton2);
-        conteneurPrincipal2.add(bouton3);
-
-
-    //Menus déroulants      
-        this.test1.add(item1);
-        this.test1.add(item2);
-        this.test1.add(item3);  
-
-        this.test2.add(item4);
-        this.test2.add(item5);
-    
+        /*fondEcran = new JLabel();
+        ImageIcon fond = new ImageIcon(this.getClass().getResource("fond_hori.jpg"));
+        fondEcran.setIcon(fond);
+        fondEcran.setVisible(true);
+        panneauPrincipal.add(fondEcran);*/
+        
+        Bienvenue = new JLabel("Bienvenue dans");
+		Bienvenue.setBounds(50,20,400,50);
+		Font police1 = new Font(" Cambria ",Font.BOLD + Font.PLAIN,30);
+		Bienvenue.setFont(police1);
+        Bienvenue.setHorizontalAlignment(JLabel.CENTER);
+		
+		Title = new JLabel("Smashing Buttons");
+        Title.setBounds(50,70,400,50);
+		Font police2 = new Font("Cambria ",Font.BOLD + Font.PLAIN,30);
+		Title.setFont(police2);
+        Title.setHorizontalAlignment(JLabel.CENTER);
+        
+    //Ajout de tous les éléments au panneau principal
+        panneauPrincipal = new JPanel(new BorderLayout());
+        panneauPrincipal.setBackground(Color.WHITE);
+        panneauPrincipal.add(Bienvenue);
+        panneauPrincipal.add(Title);
+        panneauPrincipal.add(Jouer);
+        panneauPrincipal.add(fondEcran);
+        this.add(panneauPrincipal);
+        //panneauPrincipal.add(labelPseudo);
+        //panneauPrincipal.add(champSaisiePseudo);    
     
     //Rendre la fenêtre visible
         this.setVisible(true);

@@ -1,26 +1,27 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
-import java.util.LinkedList;
 import javax.swing.ImageIcon;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 
 public class Fenetre_Jeu extends JFrame{
     
-    //Declaration des attributs de la fenetre
-    private JMenuBar menuBar = new JMenuBar();
-    private JMenu test1 = new JMenu("Fichier");
-    private JMenu test2 = new JMenu("Menu");
-
-    private JMenuItem item1 = new JMenuItem("Sauvegarder");
-    private JMenuItem item2 = new JMenuItem("Restaurer");
-    private JMenuItem item3 = new JMenuItem("Quitter");
-    private JMenuItem item4 = new JMenuItem("Suspendre");
-    private JMenuItem item5 = new JMenuItem("Reprendre");
-    
     //Declaration des elements graphiques de la fenetre
+    private	JMenuBar barreMenus;
+    
+    private JMenu menu;
+    
+    private JMenuItem pause;
+    private JMenuItem reprendre;
+    private JMenuItem restaurer;
+
+    
+    //Declaration des attribus de la fenetre
     private Plateau labyrinthe;
+    private Joueur j;
     
     /**
      * Constructeur de la classe Fenetre_Jeu
@@ -31,34 +32,43 @@ public class Fenetre_Jeu extends JFrame{
         labyrinthe = new Plateau();
         labyrinthe.setBackground(Color.BLACK);
         
-        JPanel conteneurPrincipal = new JPanel (new BorderLayout());
-        conteneurPrincipal.setBackground(Color.WHITE);
-        conteneurPrincipal.add(labyrinthe, BorderLayout.CENTER);
-
+        JPanel panneauPrincipal = new JPanel (new BorderLayout());
+        panneauPrincipal.setBackground(Color.WHITE);
+        panneauPrincipal.add(labyrinthe, BorderLayout.CENTER);
         
-        this.setContentPane(conteneurPrincipal);
+        this.setContentPane(panneauPrincipal);
         this.setSize(600,200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //Menus déroulants      
-        this.test1.add(item1);
-        this.test1.add(item2);
-        this.test1.add(item3);  
-
-        this.test2.add(item4);
-        this.test2.add(item5);
-
-        this.menuBar.add(test1);
-        this.menuBar.add(test2);
-        this.setJMenuBar(menuBar);
+        //Creation barre des menus & son ajout sur la fenetre
+        JMenuBar barreMenus = new JMenuBar();
+        this.setJMenuBar(barreMenus);
+    
+        //creation du menu "Menu" et ses options
+        JMenu menu = new JMenu("Menu");
+        barreMenus.add(menu);
+        JMenuItem pause = new JMenuItem("Pause");
+        menu.add(pause);
+        pause.addActionListener(new EcouteurMenu(this));
+        JMenuItem reprendre = new JMenuItem("Reprendre");
+        menu.add(reprendre);
+        reprendre.addActionListener(new EcouteurMenu(this));
+        JMenuItem restaurer = new JMenuItem("Restaurer");
+        menu.add(restaurer);
+        restaurer.addActionListener(new EcouteurMenu(this));
         
+        /*public void paintComponent(Graphics g, int w, int h){
+        int x1 = c*w/nbColonnes;
+        int y1 = l*h/nbLignes;
+        super.paintComponent(g);
+        g.drawImage(player,100,75, null);
+        }*/
         
         // Rendre fenetre visible
         this.setVisible(true);
     }
-    
+
 }
-    
 
 
 
