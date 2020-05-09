@@ -1,32 +1,25 @@
-import java.awt.Graphics;//
-import java.awt.image.*;
+import javax.swing.*;
 
-import java.awt.Color; 
-import java.awt.image.BufferStrategy;
-/*
- * 
- */
+public class joueur {
 
-
-public class Joueur extends Creature{
-	
-	private BufferedImage player = ImageLoader.loadImage("player.png");
-	private Jeu leJeu;
-	
-	public Joueur ( Jeu jeu, float x, float y){
-		super( x, y);
-		leJeu = jeu;
-	}
-	
-	public void tick() {
+	public int c;  //numéro de colonne de la position du joueur 
+	public int l;  //numéro de ligne de la position du joueur 
+	public JLabel Image;
+        
+	public joueur (int colonne, int ligne){
 		
-		if (leJeu.getKeyManager().up) y -=3;
-		if (leJeu.getKeyManager().down) y +=3;
-		if (leJeu.getKeyManager().left) x -=3;
-		if (leJeu.getKeyManager().right) x +=3;
+		c = colonne; 
+		l = ligne; 
 	}
-	public void render (Graphics g){
-		g.drawImage(player, (int) x , (int) y, null);
+	
+	public void changementLigne(int nb){
+		
+		l =l+nb;
 	}
+	
+	public void changementColonne(int nb){
+		
+		c =c+nb;
+	}
+    
 }
-

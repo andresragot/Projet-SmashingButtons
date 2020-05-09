@@ -1,8 +1,4 @@
-/*
- *
- * 
- * 
- */
+
 import java.awt.Graphics;
 
 public abstract class State {
