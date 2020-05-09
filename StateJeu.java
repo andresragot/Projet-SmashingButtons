@@ -1,9 +1,10 @@
-import java.awt.Graphics;
+import java.awt.Graphics;//
 import java.awt.image.*;
 
 import java.awt.Color; 
 import java.awt.image.BufferStrategy;
-
+/*
+ */
 
 
 public class StateJeu extends State {
