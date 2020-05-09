@@ -11,9 +11,15 @@ public abstract class Entite {
 		
 		this.x = x;
 		this.y = y;
-	 
-		
 	}
+	public float getX(){
+		return x;
+	}
+	
+	public float getY(){
+		return y;
+	}
+	
 	
 	public abstract void tick();
 	public abstract void render(Graphics G);

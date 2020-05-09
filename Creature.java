@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.image.BufferStrategy;
 
 public class Creature {
+	
 	private float x; 
 	private float y; 
 	private int pv;
@@ -24,6 +25,15 @@ public class Creature {
 	public void render (Graphics g){
 		g.drawImage(creature, (int) x , (int) y,null);
 	}
+	
+	public float getX(){
+		return x;
+	}
+	
+	public float getY(){
+		return y;
+	}
+	
 
 public abstract class Creature extends Entite {
 	

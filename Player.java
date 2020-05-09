@@ -21,6 +21,15 @@ public class Player{
 		leJeu = jeu;
 		
 	}
+	
+	public float getX(){
+		return x;
+	}
+	
+	public float getY(){
+		return y;
+	}
+	
 	public void tick() {
 		if (leJeu.getKeyManager().up) y -=3;
 		if (leJeu.getKeyManager().down) y +=3;
