@@ -135,6 +135,11 @@ public class Jeu implements Runnable{
 		thread = new Thread(this);
 		thread.start();//appelle la methode run()
 	}
+	public void colision(){
+		if(Joueur.getX()==Creature.getX()&&Joueur.getY()==Creature.getY()){
+			Joueur.enleverV();
+		} 
+	}
 	
 	
 	public synchronized void stop(){ //termine le fil 
